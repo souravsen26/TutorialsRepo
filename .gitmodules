@@ -1,3 +1,5 @@
 [submodule "tutorialCode-springframeworkgure"]
-	path = tutorialCode-springframeworkgure
+	path = Course1/tutorialCode-springframeworkgure
 	url = https://github.com/springframeworkguru/spring5webapp.git
+[submodule "tutorialCode-springframeworkguru"]
+	path = Course1/tutorialCode-springframework
