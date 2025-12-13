@@ -5,6 +5,7 @@ A personal repository to organize and track hands-on learning from various progr
 ## 📁 Structure Overview
 ** To see the repo structure checkout the repo using "🔗 GIT clone and 🗒 Development Notes" mentioned below and open the readme.md file using Notepad++:
 
+```
 TutorialsRepo/
 ├── course1/
 │   ├── tutorialCode-springframeworkgure/   # Submodule: Instructor's code
@@ -24,7 +25,7 @@ TutorialsRepo/
 │
 │
 └── README.md
-
+```
 ---
 
 
