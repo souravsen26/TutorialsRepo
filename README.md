@@ -3,6 +3,7 @@
 A personal repository to organize and track hands-on learning from various programming courses. Each course is structured in its own folder and may include personal projects, documentation, and external codebases integrated as Git submodules.
 
 ## 📁 Structure Overview
+** To get full picture of the structure checkout the repo using "🔗 GIT clone and 🗒 Development Notes" mentioned below :
 
 TutorialsRepo/
 ├── course1/
