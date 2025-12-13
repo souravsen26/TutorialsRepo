@@ -1,5 +1,5 @@
 # 🧱 Base Repository for Multi-Project Workspace
-This repository serves as the foundational workspace for a collection of related projects.
+This repository serves as the foundational workspace for a collection of related projects built during taking each courses.
 ## 📁 Repository Structure
 
 - `project-a/`, `project-b/`: Individual applications or services or projects.
