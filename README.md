@@ -10,14 +10,14 @@ TutorialsRepo/
 │   ├── tutorialCode-springframeworkgure/   # Submodule: Instructor's code
 │   ├── ProjectDoc/                         # Notes, diagrams, and documentation
 │   ├── myProject/                          # Your own implementation
-│   └── README.MD/                          # Your own implementation
+│   └── README.MD/                          # Individual Project Level Info
 │
 │
 ├── course2/
 │   ├── tutorialCode-springframeworkgure/   # Submodule: Instructor's code
 │   ├── ProjectDoc/                         # Notes, diagrams, and documentation
 │   ├── myProject/                          # Your own implementation
-│   └── README.MD/                          # Your own implementation
+│   └── README.MD/                          # Individual Project Level Info
 │
 ├── course3/
 │   └── ...                                 # Future course content
