@@ -1,0 +1,10 @@
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Alice',30,'F',1,'9898989899','123 Main St','alicepass');
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Bob',25,'M',2,'9898989898','456 Oak Ave','bobpass');
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Charlie',28,'M',3,'9876543211','789 Pine Rd','charliepass');
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Diana',32,'F',1,'9876445569','321 Maple St','dianapass');
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Eve',29,'F',2,'9876556211','654 Cedar Blvd','evepass');
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Frank',35,'M',3,'9876445869','987 Birch Ln','frankpass');
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Grace',30,'F',1,'9876445868','70/65 New Delhi','gracepass');
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Henry',40,'M',2,'9876445867','A89 Sapoorji Kolkata','henrypass');
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Ivy',27,'F',3,'9876445866','56 RahBehari Avenue','ivypass');
+Insert into customer(NAME,AGE,GENDER,PLAN_ID,PHONE_NO,ADDRESS,PASSWORD) values ('Jack',35,'M',3,'9876445469','798 Park street','jackpass');

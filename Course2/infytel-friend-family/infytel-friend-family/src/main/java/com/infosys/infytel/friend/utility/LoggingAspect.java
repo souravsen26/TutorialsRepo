@@ -1,4 +1,4 @@
-package com.infosys.infytel.customer.utility;
+package com.infosys.infytel.friend.utility;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -23,7 +23,7 @@ public class CallDetailsService {
 	
 	public List<CallDetailsDTO> getCustomerCallDetails(@PathVariable long phoneNo){
 		
-		logger.info("CallDetails request for cusyomer" + phoneNo);
+		logger.info("CallDetails request for customer" + phoneNo);
 		
 		List<CallDetails> callDetails = callDetailsRepo.findByCalledBy(phoneNo) ;
 		List<CallDetailsDTO> callsDTO = new ArrayList<>() ;
