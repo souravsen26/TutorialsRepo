@@ -1,0 +1,15 @@
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (1, 'Basic Plan', 1, 10);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (2, 'Standard Plan', 3, 8);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (3, 'Premium Plan', 1, 5);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (4, 'Unlimited Plan', 0, 0);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (5, 'Family Plan', 2, 6);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (6, 'Business Plan', 4, 9);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (7, 'Student Plan', 3, 7);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (8, 'Senior Plan', 2, 5);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (9, 'Trial Plan', 6, 12);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (10, 'Corporate Plan', 1, 4);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (11, 'VIP Plan', 0, 1);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (12, 'Free Plan', 7, 15);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (13, 'Enterprise Plan', 2, 3);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (14, 'Non-Profit Plan', 3, 6);
+insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (15, 'Government Plan', 1, 2);
