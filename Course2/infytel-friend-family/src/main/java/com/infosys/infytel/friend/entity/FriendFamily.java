@@ -3,6 +3,7 @@ package com.infosys.infytel.friend.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,8 +12,8 @@ import jakarta.persistence.Table;
 public class FriendFamily {
 
 	@Id
-	@GeneratedValue
-	int id ;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id ;
 	
 	@Column(name="phone_no")
 	long phoneNo;
@@ -20,11 +21,19 @@ public class FriendFamily {
 	@Column(name = "friend_and_family")
 	long friendAndFamily ;
 
-	public int getId() {
+	
+	
+	public FriendFamily(long phoneNo, long friendAndFamily) {
+		super();
+		this.phoneNo = phoneNo;
+		this.friendAndFamily = friendAndFamily;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

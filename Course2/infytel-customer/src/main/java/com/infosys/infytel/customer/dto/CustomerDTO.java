@@ -82,7 +82,6 @@ public class CustomerDTO {
 		PlanDTO planDTO = new PlanDTO() ;
 		planDTO.setPlanId(cust.getPlanId()) ;
 		custDTO.setCurrentPlan(planDTO);
-		custDTO.setCurrentPlan(planDTO);
 		
 		return custDTO ;
 	}

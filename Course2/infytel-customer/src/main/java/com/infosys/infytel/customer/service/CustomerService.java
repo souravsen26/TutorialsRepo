@@ -24,7 +24,6 @@ public class CustomerService {
 		logger.info("Creation request for customer "+custDTO);
 		Customer cust = custDTO.createEntity() ;
 		custRepo.save(cust) ;
-		
 	}
 	
 	public boolean login(LoginDTO loginDTO) {

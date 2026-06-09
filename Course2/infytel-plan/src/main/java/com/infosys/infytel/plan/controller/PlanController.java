@@ -33,7 +33,5 @@ public class PlanController {
 		
 		logger.info("Fetching plan with planId " + planId) ;
 		return planService.getSpecificPlan(planId) ;
-		
 	}
-	
 }

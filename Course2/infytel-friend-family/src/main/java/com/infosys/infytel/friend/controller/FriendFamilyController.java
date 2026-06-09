@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.infosys.infytel.friend.dto.FriendFamilyDTO;
 import com.infosys.infytel.friend.service.FriendFamilyService;
 
+@RestController
 public class FriendFamilyController {
 
 	Log logger = LogFactory.getLog(getClass()) ;
@@ -28,12 +30,11 @@ public class FriendFamilyController {
 		friendService.saveFriend(phoneNo,friendDTO) ;
 	}
 	
-	@GetMapping(value="/customers/{phoneNo}/friends",consumes= MediaType.APPLICATION_JSON_VALUE)
+	// Fetches friend and family phone numbers of a given customer phoneNo
+	@GetMapping(value="/customers/{phoneNo}/friends")
 	public List<Long> getSpecificFriends(@PathVariable Long phoneNo){
 		logger.info("Friend and Family numbers for customer"+phoneNo) ;
 		return friendService.getSpecificFriends(phoneNo);
 		
 	}
-	
-	
 }

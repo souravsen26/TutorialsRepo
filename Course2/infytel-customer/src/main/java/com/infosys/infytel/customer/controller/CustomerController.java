@@ -1,6 +1,7 @@
 package com.infosys.infytel.customer.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -42,24 +43,25 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
-	public void login(@RequestBody LoginDTO loginDTO) {
+	public boolean login(@RequestBody LoginDTO loginDTO) {
 		logger.info("login request for customer" + loginDTO) ;
-		custService.login(loginDTO) ;
+		return custService.login(loginDTO) ;
 	}
 	
 	@RequestMapping(value="/customers/{phoneNo}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public CustomerDTO getCustomerProfile(@PathVariable Long phoneNo) {
+		logger.info("phoneNo");
 		logger.info("Profile Request for customer" + phoneNo) ;
 		CustomerDTO custDTO = custService.getCustomerProfile(phoneNo) ;
 		PlanDTO planDTO = new RestTemplate().getForObject(planUri + custDTO.getCurrentPlan().getPlanId(), PlanDTO.class) ;
 		custDTO.setCurrentPlan(planDTO);
+		logger.info(planDTO);
 		
 		@SuppressWarnings("unchecked")
-		List<Long> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class); 
-		custDTO.setFriendAndFamily(friends) ;
-		
+//		List<Long> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class); 
+		List<Integer> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class);
+		List<Long> friendsList= friends.stream().map(f-> {return Long.valueOf(f) ;}).collect(Collectors.toList()) ;
+		custDTO.setFriendAndFamily(friendsList) ;
 		return custDTO ;
-	}
-	
-	
+	}	
 }
