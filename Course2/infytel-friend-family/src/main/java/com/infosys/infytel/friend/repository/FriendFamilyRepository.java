@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.infosys.infytel.friend.entity.FriendFamily;
 
-public interface FriendFamilyRepository extends JpaRepository<FriendFamily, Integer> {
+public interface FriendFamilyRepository extends JpaRepository<FriendFamily, Long> {
 	
 	List<FriendFamily> getByPhoneNo(Long phoneNo) ;
 

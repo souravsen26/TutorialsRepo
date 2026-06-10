@@ -1,4 +1,4 @@
-insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (1, 'Basic Plan', 1, 10);
+insert into `PLAN` (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (1, 'Basic Plan', 1, 10);
 insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (2, 'Standard Plan', 3, 8);
 insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (3, 'Premium Plan', 1, 5);
 insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (4, 'Unlimited Plan', 0, 0);
@@ -13,3 +13,18 @@ insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (12, 'Fre
 insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (13, 'Enterprise Plan', 2, 3);
 insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (14, 'Non-Profit Plan', 3, 6);
 insert into PLAN (PLAN_ID, PLAN_NAME,LOCAL_RATE, NATIONAL_RATE) values (15, 'Government Plan', 1, 2);
+-- insert into `PLAN` (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Basic Plan', 1, 10);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Standard Plan', 3, 8);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Premium Plan', 1, 5);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Unlimited Plan', 0, 0);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Family Plan', 2, 6);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Business Plan', 4, 9);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Student Plan', 3, 7);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Senior Plan', 2, 5);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Trial Plan', 6, 12);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Corporate Plan', 1, 4);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('VIP Plan', 0, 1);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Free Plan', 7, 15);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Enterprise Plan', 2, 3);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Non-Profit Plan', 3, 6);
+-- insert into "PLAN" (PLAN_NAME, LOCAL_RATE, NATIONAL_RATE) values ('Government Plan', 1, 2);
