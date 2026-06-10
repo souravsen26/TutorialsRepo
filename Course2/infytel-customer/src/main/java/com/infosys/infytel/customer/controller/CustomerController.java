@@ -7,6 +7,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,11 +32,14 @@ public class CustomerController {
 	@Autowired
 	CustomerService custService ;
 	
-	@Value("${friend.uri}")
+//	@Value("${friend.uri}")
 	String friendUri ;
 	
-	@Value("${plan.uri}")
+//	@Value("${plan.uri}")
 	String planUri ;
+	
+	@Autowired
+	private DiscoveryClient client;
 	
 	@RequestMapping(value="/customers", method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void createCustomer(@RequestBody CustomerDTO custDTO) {
@@ -48,18 +53,33 @@ public class CustomerController {
 		return custService.login(loginDTO) ;
 	}
 	
+	/**
+	 * @apiNote: This endpoint further calls two endpoints one of infytel-friend-family & infytel-plan 
+	 * @param phoneNo
+	 * @return
+	 */
 	@RequestMapping(value="/customers/{phoneNo}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public CustomerDTO getCustomerProfile(@PathVariable Long phoneNo) {
 		logger.info("phoneNo");
 		logger.info("Profile Request for customer" + phoneNo) ;
 		CustomerDTO custDTO = custService.getCustomerProfile(phoneNo) ;
-		PlanDTO planDTO = new RestTemplate().getForObject(planUri + custDTO.getCurrentPlan().getPlanId(), PlanDTO.class) ;
+//		PlanDTO planDTO = new RestTemplate().getForObject(planUri + custDTO.getCurrentPlan().getPlanId(), PlanDTO.class) ;
+		List<ServiceInstance> planInstance=client.getInstances("infytel-plan");
+		if(planInstance!=null && !planInstance.isEmpty()) {
+			planUri = planInstance.get(0).getUri().toString() ;
+		}
+		PlanDTO planDTO = new RestTemplate().getForObject(planUri+"/plans/" + custDTO.getCurrentPlan().getPlanId(), PlanDTO.class) ;
 		custDTO.setCurrentPlan(planDTO);
 		logger.info(planDTO);
 		
 		@SuppressWarnings("unchecked")
-//		List<Long> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class); 
-		List<Integer> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class);
+//		List<Long> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class);
+		List<ServiceInstance> friendInstance=client.getInstances("infytel-friend-family");
+		if(friendInstance!=null && !friendInstance.isEmpty()) {
+			friendUri = friendInstance.get(0).getUri().toString() ;
+		}
+//		List<Integer> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class);
+		List<Integer> friends = new RestTemplate().getForObject(friendUri+"/customers/"+phoneNo+"/friends",List.class);
 		List<Long> friendsList= friends.stream().map(f-> {return Long.valueOf(f) ;}).collect(Collectors.toList()) ;
 		custDTO.setFriendAndFamily(friendsList) ;
 		return custDTO ;
