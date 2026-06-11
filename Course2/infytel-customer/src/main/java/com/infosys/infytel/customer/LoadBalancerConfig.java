@@ -36,7 +36,7 @@ public class LoadBalancerConfig {
 			return Flux.just(Arrays.asList(new DefaultServiceInstance(serviceId+ "1", serviceId,"localhost",
 					8081,false),
 					new DefaultServiceInstance(serviceId+ "1", serviceId,"localhost",
-							7300,false))) ;
+							7400,false))) ;
 		}
 
 		@Override

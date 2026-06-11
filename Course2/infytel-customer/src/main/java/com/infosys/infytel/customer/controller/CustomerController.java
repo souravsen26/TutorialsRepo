@@ -42,6 +42,9 @@ public class CustomerController {
 	String planUri ;
 	
 	@Autowired
+	RestTemplate restTemplate ;
+	
+	@Autowired
 	private DiscoveryClient client;
 	
 	@RequestMapping(value="/customers", method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
@@ -88,6 +91,13 @@ public class CustomerController {
 		return custDTO ;
 	}	
 	
+	/**
+	 * @apiNote : This endpoint is a static loadbalanced version of the endpoint /customers/{phoneNo}. In this
+	 * the infytel-friend-family is expected two instances each running in port 8081 & 7300.
+	 * @param phoneNo
+	 * @return
+	 */
+	
 	@RequestMapping(value="/customers/v2/{phoneNo}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public CustomerDTO getCustomerProfilev2(@PathVariable Long phoneNo) {
 		logger.info("phoneNo");
@@ -109,9 +119,9 @@ public class CustomerController {
 //			friendUri = friendInstance.get(0).getUri().toString() ;
 //		}
 //		List<Integer> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class);
-		List<Integer> friends = new RestTemplate().getForObject("http://MyloadBalancer"+"/customers/"+phoneNo+"/friends",List.class);
+		List<Integer> friends = restTemplate.getForObject("http://MyloadBalancer"+"/customers/"+phoneNo+"/friends",List.class);
 		List<Long> friendsList= friends.stream().map(f-> {return Long.valueOf(f) ;}).collect(Collectors.toList()) ;
 		custDTO.setFriendAndFamily(friendsList) ;
 		return custDTO ;
-	}	
+	}
 }
