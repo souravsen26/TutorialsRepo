@@ -84,6 +84,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<!-- Dependency for spring cloud Load Balancer -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
+			<version>5.0.0</version>
+		</dependency>
 
 		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>

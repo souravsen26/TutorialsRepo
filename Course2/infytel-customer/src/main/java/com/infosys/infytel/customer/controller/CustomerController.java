@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.infosys.infytel.customer.LoadBalancerConfig;
 import com.infosys.infytel.customer.dto.CustomerDTO;
 import com.infosys.infytel.customer.dto.LoginDTO;
 import com.infosys.infytel.customer.dto.PlanDTO;
@@ -25,6 +27,7 @@ import com.infosys.infytel.customer.service.CustomerService;
 
 @RestController
 @CrossOrigin
+@LoadBalancerClient(name="MyloadBalancer" , configuration=LoadBalancerConfig.class)
 public class CustomerController {
 	
 	Log logger = LogFactory.getLog(getClass()) ;
@@ -80,6 +83,33 @@ public class CustomerController {
 		}
 //		List<Integer> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class);
 		List<Integer> friends = new RestTemplate().getForObject(friendUri+"/customers/"+phoneNo+"/friends",List.class);
+		List<Long> friendsList= friends.stream().map(f-> {return Long.valueOf(f) ;}).collect(Collectors.toList()) ;
+		custDTO.setFriendAndFamily(friendsList) ;
+		return custDTO ;
+	}	
+	
+	@RequestMapping(value="/customers/v2/{phoneNo}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public CustomerDTO getCustomerProfilev2(@PathVariable Long phoneNo) {
+		logger.info("phoneNo");
+		logger.info("Profile Request for customer" + phoneNo) ;
+		CustomerDTO custDTO = custService.getCustomerProfile(phoneNo) ;
+//		PlanDTO planDTO = new RestTemplate().getForObject(planUri + custDTO.getCurrentPlan().getPlanId(), PlanDTO.class) ;
+		List<ServiceInstance> planInstance=client.getInstances("infytel-plan");
+		if(planInstance!=null && !planInstance.isEmpty()) {
+			planUri = planInstance.get(0).getUri().toString() ;
+		}
+		PlanDTO planDTO = new RestTemplate().getForObject(planUri+"/plans/" + custDTO.getCurrentPlan().getPlanId(), PlanDTO.class) ;
+		custDTO.setCurrentPlan(planDTO);
+		logger.info(planDTO);
+		
+		@SuppressWarnings("unchecked")
+//		List<Long> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class);
+//		List<ServiceInstance> friendInstance=client.getInstances("infytel-friend-family");
+//		if(friendInstance!=null && !friendInstance.isEmpty()) {
+//			friendUri = friendInstance.get(0).getUri().toString() ;
+//		}
+//		List<Integer> friends = new RestTemplate().getForObject(friendUri+phoneNo+"/friends",List.class);
+		List<Integer> friends = new RestTemplate().getForObject("http://MyloadBalancer"+"/customers/"+phoneNo+"/friends",List.class);
 		List<Long> friendsList= friends.stream().map(f-> {return Long.valueOf(f) ;}).collect(Collectors.toList()) ;
 		custDTO.setFriendAndFamily(friendsList) ;
 		return custDTO ;
