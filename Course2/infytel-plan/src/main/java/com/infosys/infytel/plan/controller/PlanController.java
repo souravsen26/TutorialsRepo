@@ -29,7 +29,9 @@ public class PlanController {
 	}
 	
 	@GetMapping(value="/plans/{planId}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public PlanDTO getSpecificPlans(@PathVariable Integer planId) {
+	public PlanDTO getSpecificPlans(@PathVariable Integer planId) throws InterruptedException {
+		
+		Thread.sleep(5000) ;
 		
 		logger.info("Fetching plan with planId " + planId) ;
 		return planService.getSpecificPlan(planId) ;

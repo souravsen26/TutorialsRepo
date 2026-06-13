@@ -18,23 +18,29 @@ import com.infosys.infytel.friend.service.FriendFamilyService;
 @RestController
 public class FriendFamilyController {
 
-	Log logger = LogFactory.getLog(getClass()) ;
-	
+	Log logger = LogFactory.getLog(getClass());
+
 	@Autowired
-	FriendFamilyService friendService ;
-	
+	FriendFamilyService friendService;
+
 	// Create Friend Family
-	@PostMapping(value="/customers/{phoneNo}/friends", consumes= MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/customers/{phoneNo}/friends", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void saveFriend(@PathVariable Long phoneNo, @RequestBody FriendFamilyDTO friendDTO) {
-		logger.info("Creation request for customer"+friendDTO) ;
-		friendService.saveFriend(phoneNo,friendDTO) ;
+		logger.info("Creation request for customer" + friendDTO);
+		friendService.saveFriend(phoneNo, friendDTO);
 	}
-	
+
 	// Fetches friend and family phone numbers of a given customer phoneNo
 	@GetMapping(value="/customers/{phoneNo}/friends")
-	public List<Long> getSpecificFriends(@PathVariable Long phoneNo){
+	public List<Long> getSpecificFriends(@PathVariable Long phoneNo) throws InterruptedException{
+		Thread.sleep(5000) ;
 		logger.info("Friend and Family numbers for customer"+phoneNo) ;
-		return friendService.getSpecificFriends(phoneNo);
+		if(phoneNo == 9876445869L) {
+			throw new RuntimeException("Error Occured");
+		}
+		else {
+			return friendService.getSpecificFriends(phoneNo);
+		}
 		
 	}
 }

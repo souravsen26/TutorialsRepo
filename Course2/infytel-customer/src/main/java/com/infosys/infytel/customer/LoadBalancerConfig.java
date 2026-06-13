@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 
 import reactor.core.publisher.Flux;
 
-@Component
+//@Component
 public class LoadBalancerConfig {
 
 	@Bean
-	@Primary
+//	@Primary
 	ServiceInstanceListSupplier serviceInstanceListSupplier() {
 		return new DemoServiceInstanceListSupplier("infytel-friend-family") ;
 	}
@@ -34,9 +34,9 @@ public class LoadBalancerConfig {
 		@Override
 		public Flux<List<ServiceInstance>> get(){
 			return Flux.just(Arrays.asList(new DefaultServiceInstance(serviceId+ "1", serviceId,"localhost",
-					8081,false),
-					new DefaultServiceInstance(serviceId+ "1", serviceId,"localhost",
-							7400,false))) ;
+					8081,false)
+//					,new DefaultServiceInstance(serviceId+ "1", serviceId,"localhost",7400,false)
+					)) ;
 		}
 
 		@Override
